@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Couleurs principales -->
+    <color name="primary">#FF6B81</color>
+    <color name="primary_light">#FFE3E7</color>
+
+
+    <!-- Couleurs de fond -->
+    <color name="background_light">#F8F5F6</color>
+    <color name="background_dark">#230F12</color>
+    <color name="follicular">#46A842</color>
+
+    <!-- Couleurs du texte -->
+    <color name="text_primary">#1E1E1E</color>
+    <color name="text_secondary">#7C7C7C</color>
+
+    <!-- Autres -->
+    <color name="white">#FFFFFF</color>
+    <color name="neutral_light">#E0E0E0</color>
+    <color name="neutral_dark">#4A4A4A</color>
+    <color name="neutral_light_subtle">#F8F5F6</color>
+    <color name="neutral_dark_subtle">#2C1E20</color>
+    <color name="symptom">#FFC8DD</color>
+
+</resources>

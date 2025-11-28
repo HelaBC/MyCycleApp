@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Couleur de fond -->
+    <solid android:color="@color/background_light" />
+
+    <!-- Bordure rose (couleur primaire) -->
+    <stroke
+        android:width="2dp"
+        android:color="@color/primary" />
+
+    <!-- Coins arrondis -->
+    <corners android:radius="24dp" />
+
+    <!-- Légère ombre ou marge intérieure si tu veux de l’espace -->
+    <padding
+        android:left="4dp"
+        android:top="4dp"
+        android:right="4dp"
+        android:bottom="4dp" />
+
+</shape>

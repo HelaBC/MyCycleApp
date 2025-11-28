@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dashboard_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_light"
+    android:padding="16dp">
+
+    <!-- Top App Bar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/background_light">
+
+        <ImageView
+            android:id="@+id/close_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/close"
+            android:layout_alignParentStart="true"
+            android:contentDescription="Close"
+            app:tint="@color/neutral_dark"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How are you feeling?"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <!-- Date Selector -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:background="@color/neutral_light_subtle"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:src="@drawable/calendar"
+            android:contentDescription="Calendar"
+            app:tint="@color/neutral_dark"/>
+
+        <TextView
+            android:layout_width="279dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:paddingStart="8dp"
+            android:text="Today, June 18"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+
+    <!-- Symptom Sliders -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:gap="8dp">
+
+        <!-- Pain -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:background="@drawable/card_bg_1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:text="Pain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="10"
+                android:progress="2"
+                android:thumbTint="@color/primary"
+                android:progressTint="@color/primary"/>
+        </LinearLayout>
+
+        <!-- Fatigue -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:background="@drawable/card_bg_1"
+            android:layout_marginTop="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:text="Fatigue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:text="1"
+                    android:textColor="@color/primary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="10"
+                android:progress="1"
+                android:thumbTint="@color/primary"
+                android:progressTint="@color/primary"/>
+        </LinearLayout>
+
+        <!-- Bloating -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:background="@drawable/card_bg_1"
+            android:layout_marginTop="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:text="Bloating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:text="4"
+                    android:textColor="@color/primary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="10"
+                android:progress="7"
+                android:progressTint="@color/primary"
+                android:thumbTint="@color/primary" />
+        </LinearLayout>
+    </LinearLayout>
+    <!-- Mood Selector -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Mood"
+            android:textSize="16sp" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="4"
+            android:rowCount="1"
+            android:layout_marginTop="8dp"
+            android:alignmentMode="alignMargins"
+            android:columnOrderPreserved="false"
+            android:rowOrderPreserved="false"
+            android:useDefaultMargins="true">
+
+            <!-- Happy -->
+            <TextView
+                android:id="@+id/mood_happy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:text="😊"
+                android:textSize="32sp"
+
+                android:background="@drawable/card_bg"
+                android:padding="16dp"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <!-- Neutral -->
+            <TextView
+                android:id="@+id/mood_neutral"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:text="😐"
+                android:textSize="32sp"
+                android:background="@color/neutral_light_subtle"
+                android:padding="16dp"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <!-- Sad -->
+            <TextView
+                android:id="@+id/mood_sad"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:text="😔"
+                android:textSize="32sp"
+                android:background="@color/neutral_light_subtle"
+                android:padding="16dp"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <!-- Angry -->
+            <TextView
+                android:id="@+id/mood_angry"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:text="😡"
+                android:textSize="32sp"
+                android:background="@color/neutral_light_subtle"
+                android:padding="16dp"
+                android:clickable="true"
+                android:focusable="true"/>
+        </GridLayout>
+    </LinearLayout>
+
+
+    <!-- Notes Field -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notes"
+            android:textSize="16sp"
+            />
+
+        <EditText
+            android:id="@+id/notes"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="Add a note..."
+            android:background="@drawable/card_bg_1"
+            android:padding="8dp"
+            android:gravity="top"/>
+    </LinearLayout>
+
+    <!-- Save Button -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Save"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/primary"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"/>
+</LinearLayout>
