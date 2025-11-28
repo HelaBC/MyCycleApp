@@ -12,7 +12,6 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Top App Bar -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -20,28 +19,24 @@
             android:gravity="center_vertical"
             android:paddingBottom="8dp">
 
-            <!-- Back button placeholder -->
             <ImageView
+                android:id="@+id/btn_back"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/ic_back"
+                android:src="@drawable/arrow_back"
                 android:contentDescription="Back"
-                android:visibility="gone"/>
+                android:layout_alignParentStart="true"
+                app:tint="@color/text_primary" />
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Settings"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:gravity="center"/>
 
-            <!-- Right actions placeholder -->
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:visibility="gone"/>
         </LinearLayout>
 
         <!-- Account Section -->
@@ -75,6 +70,7 @@
                     android:layout_height="40dp"
                     android:src="@drawable/person"
                     android:backgroundTint="@color/primary"
+                    app:tint="@color/primary"
 
 
                     android:padding="8dp"
@@ -91,7 +87,9 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_chevron_right"
+                    android:src="@drawable/chevron_right"
+                    app:tint="@color/text_primary"
+
                     android:contentDescription="Go"/>
             </LinearLayout>
         </LinearLayout>
@@ -125,8 +123,8 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_notifications"
-                    android:backgroundTint="@color/primary"
+                    android:src="@drawable/notifications"
+                    app:tint="@color/primary"
                     android:padding="8dp"/>
 
                 <TextView
@@ -140,7 +138,8 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_chevron_right"/>
+                    android:src="@drawable/chevron_right"
+                    app:tint="@color/text_primary"/>
             </LinearLayout>
 
             <!-- Theme Toggle -->
@@ -155,7 +154,8 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_contrast"
+                    android:src="@drawable/contrast"
+                    app:tint="@color/primary"
                     android:backgroundTint="@color/primary"
                     android:padding="8dp"/>
 
@@ -185,7 +185,8 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_language"
+                    android:src="@drawable/language"
+                    app:tint="@color/primary"
                     android:backgroundTint="@color/primary"
                     android:padding="8dp"/>
 
@@ -210,7 +211,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Support & Data"
+            android:text="Support &amp; Data"
             android:textStyle="bold"
             android:textSize="16sp"
             android:paddingTop="12dp"
@@ -235,8 +236,9 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_shield"
+                    android:src="@drawable/shield"
                     android:backgroundTint="@color/primary"
+                    app:tint="@color/primary"
                     android:padding="8dp"/>
 
                 <TextView
@@ -250,7 +252,8 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_chevron_right"/>
+                    android:src="@drawable/chevron_right"
+                    app:tint="@color/text_primary"/>
             </LinearLayout>
 
             <!-- About Us -->
@@ -266,8 +269,9 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_info"
+                    android:src="@drawable/info"
                     android:backgroundTint="@color/primary"
+                    app:tint="@color/primary"
                     android:padding="8dp"/>
 
                 <TextView
@@ -281,7 +285,8 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_chevron_right"/>
+                    android:src="@drawable/chevron_right"
+                    app:tint="@color/text_primary"/>
             </LinearLayout>
         </LinearLayout>
 
