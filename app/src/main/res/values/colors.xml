@@ -21,5 +21,6 @@
     <color name="neutral_light_subtle">#F8F5F6</color>
     <color name="neutral_dark_subtle">#2C1E20</color>
     <color name="symptom">#FFC8DD</color>
+    <color name="soft_pink_gradient_start">#FFF5F8</color>
 
 </resources>

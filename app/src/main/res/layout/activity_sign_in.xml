@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/soft_pink_gradient_start"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <!-- Illustration -->
+        <ImageView
+            android:id="@+id/iv_login_illustration"
+            android:layout_width="250dp"
+            android:layout_height="200dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/photo2"
+            android:contentDescription="Illustration"/>
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tv_login_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MyCycle"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:gravity="center"
+            android:paddingTop="16dp"/>
+
+        <!-- Email input -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:paddingTop="24dp"/>
+
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:hint="Enter your email"
+            android:padding="16dp"
+            android:background="@drawable/rounded_edittext"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/text_secondary"
+            />
+
+        <!-- Password input -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:paddingTop="16dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:background="@drawable/rounded_edittext"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:hint="Enter your password"
+                android:background="@android:color/transparent"
+                android:inputType="textPassword"
+                android:textColor="@color/text_secondary"
+
+                android:padding="0dp"/>
+
+
+        </LinearLayout>
+
+        <!-- Forgot password -->
+        <TextView
+            android:id="@+id/tv_forgot_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Forgot password?"
+            android:textColor="@color/primary"
+            android:gravity="end"
+            android:paddingTop="8dp"
+            android:textSize="14sp"/>
+
+        <!-- Sign In Button -->
+        <Button
+            android:id="@+id/btn_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Sign In"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/primary"
+            android:textSize="16sp"
+            android:layout_marginTop="24dp"
+            android:cornerRadius="28dp"/>
+
+        <!-- Create Account Button -->
+        <Button
+            android:id="@+id/btn_create_account"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Create Account"
+            android:textColor="@color/primary"
+            android:backgroundTint="@color/primary_light"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"
+            android:cornerRadius="28dp"/>
+    </LinearLayout>
+</ScrollView>
