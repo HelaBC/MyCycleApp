@@ -43,257 +43,210 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp"
-            android:gap="16dp">
+            >
 
-            <!-- Period Selector -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:orientation="horizontal"
-                android:background="@drawable/card_bg_1"
-                android:padding="4dp"
-                android:gravity="center"
-                android:weightSum="3">
-
-                <!-- WEEK Button -->
-                <Button
-                    android:id="@+id/btn_week"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Week"
-                    android:textColor="@color/primary"
-                    android:background="@drawable/btn_period_selected"
-                    android:textStyle="bold"
-                    android:textSize="14sp"/>
-
-                <!-- MONTH Button -->
-                <Button
-                    android:id="@+id/btn_month"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Month"
-                    android:textColor="@color/text_secondary"
-
-                    android:textSize="14sp"/>
-
-                <!-- YEAR Button -->
-                <Button
-                    android:id="@+id/btn_year"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Year"
-                    android:textColor="@color/text_primary"
-                    android:textSize="14sp"/>
-            </LinearLayout>
 
 
             <!-- Symptom Frequency -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/card_bg_1"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center_horizontal"
-                android:divider="?android:attr/dividerHorizontal"
-                android:showDividers="middle"
-                android:dividerPadding="8dp">
-
-                <!-- Section Title -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Symptom Frequency"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_primary"
-                    android:gravity="center"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="12dp" />
-
-                <!-- Cramps -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginVertical="4dp">
-
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:text="Cramps"
-                        android:textSize="14sp"
-                        android:textColor="@color/text_primary" />
-
-                    <ProgressBar
-                        android:layout_width="0dp"
-                        android:layout_height="8dp"
-                        android:layout_weight="1"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:progress="85"
-                        android:max="100"
-                        android:progressTint="@color/primary"
-                         />
-
-                    <TextView
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
-                        android:text="12"
-                        android:textSize="14sp"
-                        android:textColor="@color/primary"
-                        android:gravity="end" />
-                </LinearLayout>
-
-                <!-- Headache -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginVertical="4dp">
-
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:text="Headache"
-                        android:textSize="14sp"
-                        android:textColor="@color/text_primary" />
-
-                    <ProgressBar
-                        android:layout_width="0dp"
-                        android:layout_height="8dp"
-                        android:layout_weight="1"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:progress="60"
-                        android:max="100"
-                        android:progressTint="@color/primary"
-                         />
-
-                    <TextView
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
-                        android:text="8"
-                        android:textSize="14sp"
-                        android:textColor="@color/primary"
-                        android:gravity="end" />
-                </LinearLayout>
-
-                <!-- Fatigue -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginVertical="4dp">
-
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:text="Fatigue"
-                        android:textSize="14sp"
-                        android:textColor="@color/text_primary" />
-
-                    <ProgressBar
-                        android:layout_width="0dp"
-                        android:layout_height="8dp"
-                        android:layout_weight="1"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:progress="70"
-                        android:max="100"
-                        android:progressTint="@color/primary" />
-
-                    <TextView
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
-                        android:text="9"
-                        android:textSize="14sp"
-                        android:textColor="@color/primary"
-                        android:gravity="end" />
-                </LinearLayout>
-
-                <!-- Bloating -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginVertical="4dp">
-
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:text="Bloating"
-                        android:textSize="14sp"
-                        android:textColor="@color/text_primary" />
-
-                    <ProgressBar
-                        android:layout_width="0dp"
-                        android:layout_height="8dp"
-                        android:layout_weight="1"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:progress="45"
-                        android:max="100"
-                        android:progressTint="@color/primary"
-                         />
-
-                    <TextView
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
-                        android:text="6"
-                        android:textSize="14sp"
-                        android:textColor="@color/primary"
-                        android:gravity="end" />
-                </LinearLayout>
-
-                <!-- Acne -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginVertical="4dp">
-
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:text="Acne"
-                        android:textSize="14sp"
-                        android:textColor="@color/text_primary" />
-
-                    <ProgressBar
-                        android:layout_width="0dp"
-                        android:layout_height="8dp"
-                        android:layout_weight="1"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:progress="50"
-                        android:max="100"
-                        android:progressTint="@color/primary"
-                         />
-
-                    <TextView
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
-                        android:text="7"
-                        android:textSize="14sp"
-                        android:textColor="@color/primary"
-                        android:gravity="end" />
-                </LinearLayout>
-
-            </LinearLayout>
 
 
             <!-- Stats cards -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/card_bg_1"
+                android:divider="?android:attr/dividerHorizontal"
+                android:dividerPadding="8dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:showDividers="middle">
+
+                <!-- Section Title -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center"
+                    android:text="Symptom Frequency"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <!-- Cramps -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="Cramps"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="10dp"
+                        android:layout_weight="1"
+                        android:max="100"
+                        android:progress="85"
+                        android:progressTint="@color/primary" />
+
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:text="12"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Headache -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="Headache"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:max="100"
+                        android:progress="60"
+                        android:progressTint="@color/primary" />
+
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:text="8"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Fatigue -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="Fatigue"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:max="100"
+                        android:progress="70"
+                        android:progressTint="@color/primary" />
+
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:text="9"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Bloating -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="Bloating"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:max="100"
+                        android:progress="45"
+                        android:progressTint="@color/primary" />
+
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:text="6"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Acne -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="Acne"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:max="100"
+                        android:progress="50"
+                        android:progressTint="@color/primary" />
+
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:text="7"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gap="14dp"
                 android:layout_marginTop="16dp">
 
                 <!-- Avg Cycle Length -->
@@ -304,7 +257,7 @@
                     android:orientation="vertical"
                     android:padding="12dp"
                     android:background="@drawable/card_bg_1"
-                    android:gap="4dp">
+                    >
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -336,7 +289,7 @@
                     android:orientation="vertical"
                     android:padding="12dp"
                     android:background="@drawable/card_bg_1"
-                    android:gap="10dp">
+                   >
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -369,7 +322,7 @@
                 android:padding="12dp"
                 android:background="@drawable/card_bg_1"
                 android:layout_marginTop="16dp"
-                android:gap="8dp">
+                >
 
                 <TextView
                     android:layout_height="wrap_content"
@@ -397,7 +350,7 @@
                         android:orientation="horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gap="4dp">
+                       >
 
                         <TextView
                             android:layout_height="wrap_content"
@@ -426,7 +379,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/neutral_dark"/>
+                    android:background="@color/text_secondary"/>
 
                 <!-- Follicular -->
                 <LinearLayout
@@ -446,7 +399,7 @@
                         android:orientation="horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gap="4dp">
+                        >
 
                         <TextView
                             android:layout_height="wrap_content"
@@ -513,7 +466,7 @@
                         android:orientation="horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gap="4dp">
+                        >
 
                         <TextView
                             android:layout_height="wrap_content"

@@ -109,7 +109,7 @@
             android:backgroundTint="@color/primary"
             android:textSize="16sp"
             android:layout_marginTop="24dp"
-            android:cornerRadius="28dp"/>
+            />
 
         <!-- Create Account Button -->
         <Button
@@ -121,6 +121,6 @@
             android:backgroundTint="@color/primary_light"
             android:textSize="16sp"
             android:layout_marginTop="12dp"
-            android:cornerRadius="28dp"/>
+            />
     </LinearLayout>
 </ScrollView>

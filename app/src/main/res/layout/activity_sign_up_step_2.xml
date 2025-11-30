@@ -133,15 +133,15 @@
             android:orientation="horizontal"
             android:gravity="start"
             android:layout_marginBottom="16dp"
-            android:wrapBefore="true">
+            >
 
             <Button
                 android:id="@+id/btn_cramps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cramps"
-                android:background="@drawable/"
                 android:textColor="@color/primary"
+                android:backgroundTint="@color/symptom"
                 android:padding="8dp"
                 android:layout_marginEnd="4dp"/>
 
@@ -150,8 +150,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Headache"
-                android:textColor="@android:color/white"
-                android:backgroundTint="@color/primary"
+                android:textColor="@color/text_primary"
+                android:backgroundTint="#D1CFCF"
                 android:padding="8dp"
                 android:layout_marginEnd="4dp"/>
 
@@ -160,10 +160,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mood Swings"
-                android:textColor="@android:color/white"
-                android:backgroundTint="@color/primary"
+                android:textColor="@color/text_primary"
+                android:backgroundTint="#D1CFCF"
                 android:padding="8dp"
                 android:layout_marginEnd="4dp"/>
+            <Button
+                android:id="@+id/btn_bloating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bloating"
+                android:textColor="@color/text_primary"
+                android:backgroundTint="#D1CFCF"
+                android:padding="8dp"
+                android:layout_marginEnd="4dp"/>
+
 
             <!-- More symptoms can be added similarly -->
         </LinearLayout>
@@ -178,7 +188,7 @@
             android:backgroundTint="@color/primary"
             android:textSize="16sp"
             android:layout_marginTop="24dp"
-            android:cornerRadius="28dp"/>
+            />
 
         <TextView
             android:layout_width="match_parent"
