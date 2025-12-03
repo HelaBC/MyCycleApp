@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyCycle">
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +20,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".activities.SignInActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.SignUpActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.HomeActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.CalendarActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.SymptomsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.StatisticsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:exported="false" />
 
     </application>
 

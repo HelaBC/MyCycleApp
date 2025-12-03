@@ -43,6 +43,7 @@ dependencies {
         exclude( group= "com.android.support", module= "support-compat")
     }
     implementation("com.jakewharton.threetenabp:threetenabp:1.4.6")
+    implementation(libs.firebase.crashlytics.buildtools)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
