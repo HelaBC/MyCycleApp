@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -47,6 +52,28 @@
 
         <activity
             android:name=".activities.SettingsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.EditProfileActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.NotificationSettingsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.PrivacyActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.AboutActivity"
+            android:exported="false" />
+
+        <!-- Notification Receiver -->
+        <receiver
+            android:name=".receivers.NotificationReceiver"
+            android:enabled="true"
             android:exported="false" />
 
     </application>

@@ -590,6 +590,72 @@ public class DBHelper extends SQLiteOpenHelper {
         return avgCycle;
     }
 
+    /**
+     * Get most common mood statistics
+     * @return Array with [mood, count] or null if no data
+     */
+    public String[] getMostCommonMood(long userId, String startDate, String endDate) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT " + COL_ENTRY_MOOD + ", COUNT(*) as count " +
+                "FROM " + TABLE_CYCLE_ENTRIES + " " +
+                "WHERE " + COL_ENTRY_USER_ID + " = ? " +
+                "AND " + COL_ENTRY_DATE + " BETWEEN ? AND ? " +
+                "AND " + COL_ENTRY_MOOD + " IS NOT NULL AND " + COL_ENTRY_MOOD + " != '' " +
+                "GROUP BY " + COL_ENTRY_MOOD + " " +
+                "ORDER BY count DESC " +
+                "LIMIT 1";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(userId), startDate, endDate});
+        String[] result = null;
+        if (cursor.moveToFirst()) {
+            result = new String[]{
+                    cursor.getString(cursor.getColumnIndexOrThrow(COL_ENTRY_MOOD)),
+                    String.valueOf(cursor.getInt(cursor.getColumnIndexOrThrow("count")))
+            };
+        }
+        cursor.close();
+        db.close();
+        return result;
+    }
+
+    /**
+     * Get symptom correlations by phase
+     * @return Map-like structure: phase -> list of symptom names
+     */
+    public java.util.Map<String, java.util.List<String>> getSymptomCorrelationsByPhase(long userId, String startDate, String endDate) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        java.util.Map<String, java.util.List<String>> correlations = new java.util.HashMap<>();
+        
+        // Get symptoms grouped by phase, ordered by frequency
+        String query = "SELECT e." + COL_ENTRY_PHASE + ", s." + COL_SYMPTOM_NAME + ", COUNT(*) as count " +
+                "FROM " + TABLE_SYMPTOMS + " s " +
+                "INNER JOIN " + TABLE_CYCLE_ENTRIES + " e ON s." + COL_SYMPTOM_ENTRY_ID + " = e." + COL_ENTRY_ID + " " +
+                "WHERE e." + COL_ENTRY_USER_ID + " = ? " +
+                "AND e." + COL_ENTRY_DATE + " BETWEEN ? AND ? " +
+                "AND e." + COL_ENTRY_PHASE + " IS NOT NULL " +
+                "GROUP BY e." + COL_ENTRY_PHASE + ", s." + COL_SYMPTOM_NAME + " " +
+                "HAVING count >= 2 " +  // Only show symptoms that appear at least 2 times in this phase
+                "ORDER BY e." + COL_ENTRY_PHASE + ", count DESC";
+        
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(userId), startDate, endDate});
+        if (cursor.moveToFirst()) {
+            do {
+                String phase = cursor.getString(cursor.getColumnIndexOrThrow(COL_ENTRY_PHASE));
+                String symptom = cursor.getString(cursor.getColumnIndexOrThrow(COL_SYMPTOM_NAME));
+                
+                if (!correlations.containsKey(phase)) {
+                    correlations.put(phase, new java.util.ArrayList<String>());
+                }
+                // Limit to top 3 symptoms per phase
+                if (correlations.get(phase).size() < 3) {
+                    correlations.get(phase).add(symptom);
+                }
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return correlations;
+    }
+
     // ==================== PREDICTION OPERATIONS ====================
 
     /**

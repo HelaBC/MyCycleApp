@@ -47,15 +47,15 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-
             android:src="@drawable/calendar"
             android:contentDescription="Calendar"
             app:tint="@color/neutral_dark"/>
 
         <TextView
-            android:layout_width="279dp"
+            android:id="@+id/tv_selected_date"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:gravity="center"
             android:paddingStart="8dp"
             android:text="Today, June 18"
@@ -102,6 +102,7 @@
             </LinearLayout>
 
             <SeekBar
+                android:id="@+id/seek_cramps"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:max="10"
@@ -141,6 +142,7 @@
             </LinearLayout>
 
             <SeekBar
+                android:id="@+id/seek_fatigue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:max="10"
@@ -178,6 +180,7 @@
             </LinearLayout>
 
             <SeekBar
+                android:id="@+id/seek_mood_swings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:max="10"
@@ -215,6 +218,7 @@
             </LinearLayout>
 
             <SeekBar
+                android:id="@+id/seek_bloating"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:max="10"
@@ -333,6 +337,7 @@
 
     <!-- Save Button -->
     <Button
+        android:id="@+id/btn_save"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:text="Save"

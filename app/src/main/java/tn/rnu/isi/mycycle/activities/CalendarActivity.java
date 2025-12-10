@@ -1,18 +1,20 @@
 package tn.rnu.isi.mycycle.activities;
 
-import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
-import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.DayViewDecorator;
 import com.prolificinteractive.materialcalendarview.DayViewFacade;
-import com.prolificinteractive.materialcalendarview.spans.DotSpan;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -25,69 +27,124 @@ import tn.rnu.isi.mycycle.R;
 public class CalendarActivity extends AppCompatActivity {
 
     private MaterialCalendarView calendarView;
+    private LinearLayout navHome;
+    private LinearLayout navCalendar;
+    private LinearLayout navStats;
+    private LinearLayout navSettings;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
         calendarView = findViewById(R.id.calendarView);
+        ImageView btnBack = findViewById(R.id.btn_back);
 
-        // Example: Set period start and length
-        CalendarDay periodStart = CalendarDay.from(2025, 11, 27); // YYYY, MM, DD (Month is 1-indexed!)
-        int periodLength = 5;
+        navHome = findViewById(R.id.nav_home);
+        navCalendar = findViewById(R.id.nav_calendar);
+        navStats = findViewById(R.id.nav_stats);
+        navSettings = findViewById(R.id.nav_settings);
 
-        // Example: Cycle length for fertile window
-        int cycleLength = 28;
+        if (btnBack != null) {
+            btnBack.setOnClickListener(v -> finish());
+        }
 
-        highlightPeriodAndFertile(periodStart, periodLength, cycleLength);
+        setupNavigation();
+
+        // Get current date for example
+        Calendar today = Calendar.getInstance();
+        CalendarDay periodStart = CalendarDay.from(today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, 1);
+        int periodLength = 5; // days of bleeding
+        int cycleLength = 28; // full cycle length
+
+        highlightCycle(periodStart, periodLength, cycleLength);
 
         calendarView.setOnDateChangedListener((widget, date, selected) -> {
-            Toast.makeText(this, "Clicked: " + date, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Selected: " + date, Toast.LENGTH_SHORT).show();
         });
     }
 
-    private void highlightPeriodAndFertile(CalendarDay start, int periodLength, int cycleLength) {
-        List<CalendarDay> periodDays = new ArrayList<>();
-        Calendar cal = Calendar.getInstance();
-        cal.set(start.getYear(), start.getMonth() - 1, start.getDay());
+    private void setupNavigation() {
+        navHome.setOnClickListener(v -> {
+            Intent intent = new Intent(CalendarActivity.this, HomeActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+        });
 
-        // Period days
-        for (int i = 0; i < periodLength; i++) {
-            periodDays.add(CalendarDay.from(cal.get(Calendar.YEAR),
-                    cal.get(Calendar.MONTH) + 1,
-                    cal.get(Calendar.DAY_OF_MONTH)));
-            cal.add(Calendar.DATE, 1);
-        }
-        calendarView.addDecorator(new EventDecorator(Color.RED, periodDays));
+        navCalendar.setOnClickListener(v -> {
+            // Already on calendar
+        });
 
-        // Ovulation day (middle of cycle)
-        cal.set(start.getYear(), start.getMonth() - 1, start.getDay());
-        cal.add(Calendar.DATE, cycleLength / 2);
-        CalendarDay ovulationDay = CalendarDay.from(cal.get(Calendar.YEAR),
-                cal.get(Calendar.MONTH) + 1,
-                cal.get(Calendar.DAY_OF_MONTH));
-        calendarView.addDecorator(new EventDecorator(Color.MAGENTA, List.of(ovulationDay)));
+        navStats.setOnClickListener(v -> {
+            Intent intent = new Intent(CalendarActivity.this, StatisticsActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+        });
 
-        // Fertile window: 5 days before ovulation
-        cal.add(Calendar.DATE, -5);
-        List<CalendarDay> fertileDays = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            fertileDays.add(CalendarDay.from(cal.get(Calendar.YEAR),
-                    cal.get(Calendar.MONTH) + 1,
-                    cal.get(Calendar.DAY_OF_MONTH)));
-            cal.add(Calendar.DATE, 1);
-        }
-        calendarView.addDecorator(new EventDecorator(Color.GREEN, fertileDays));
+        navSettings.setOnClickListener(v -> {
+            Intent intent = new Intent(CalendarActivity.this, SettingsActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+        });
     }
 
-    // Decorator for coloring dates
-    public static class EventDecorator implements DayViewDecorator {
+    private void highlightCycle(CalendarDay start, int periodLength, int cycleLength) {
+        List<CalendarDay> periodDays = new ArrayList<>();
+        List<CalendarDay> fertileDays = new ArrayList<>();
+        List<CalendarDay> ovulationDays = new ArrayList<>();
+
+        Calendar cal = Calendar.getInstance();
+        // CalendarDay month is 1-based, Calendar month is 0-based
+        cal.set(start.getYear(), start.getMonth() - 1, start.getDay());
+
+        // Period days (red background)
+        for (int i = 0; i < periodLength; i++) {
+            periodDays.add(CalendarDay.from(
+                    cal.get(Calendar.YEAR),
+                    cal.get(Calendar.MONTH) + 1,
+                    cal.get(Calendar.DAY_OF_MONTH)));
+            cal.add(Calendar.DAY_OF_MONTH, 1);
+        }
+
+        // Ovulation day: period start + (cycleLength - 14) days
+        cal.set(start.getYear(), start.getMonth() - 1, start.getDay());
+        cal.add(Calendar.DAY_OF_MONTH, cycleLength - 14);
+        CalendarDay ovulation = CalendarDay.from(
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH) + 1,
+                cal.get(Calendar.DAY_OF_MONTH));
+        ovulationDays.add(ovulation);
+
+        // Fertile window: 5 days before ovulation (green background)
+        cal.add(Calendar.DAY_OF_MONTH, -5);
+        for (int i = 0; i < 6; i++) { // 5 days before + ovulation day
+            fertileDays.add(CalendarDay.from(
+                    cal.get(Calendar.YEAR),
+                    cal.get(Calendar.MONTH) + 1,
+                    cal.get(Calendar.DAY_OF_MONTH)));
+            cal.add(Calendar.DAY_OF_MONTH, 1);
+        }
+
+        // Add decorators with background colors (lower priority decorators first)
+        // Fertile window - light green
+        calendarView.addDecorator(new BackgroundDecorator(Color.parseColor("#A5D6A7"), fertileDays));
+
+        // Period days - light red/pink
+        calendarView.addDecorator(new BackgroundDecorator(Color.parseColor("#EF9A9A"), periodDays));
+
+        // Ovulation day - purple (will override fertile window for that one day)
+        calendarView.addDecorator(new BackgroundDecorator(Color.parseColor("#CE93D8"), ovulationDays));
+    }
+
+    // Decorator class that adds background color to days
+    public static class BackgroundDecorator implements DayViewDecorator {
         private final int color;
         private final HashSet<CalendarDay> dates;
 
-        public EventDecorator(int color, Collection<CalendarDay> dates) {
+        public BackgroundDecorator(int color, Collection<CalendarDay> dates) {
             this.color = color;
             this.dates = new HashSet<>(dates);
         }
@@ -99,7 +156,7 @@ public class CalendarActivity extends AppCompatActivity {
 
         @Override
         public void decorate(@NonNull DayViewFacade view) {
-            view.addSpan(new DotSpan(10, color));
+            view.setBackgroundDrawable(new ColorDrawable(color));
         }
     }
 }

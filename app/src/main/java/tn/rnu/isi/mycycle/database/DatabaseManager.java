@@ -12,7 +12,8 @@ import tn.rnu.isi.mycycle.utils.DateUtils;
 
 /**
  * DatabaseManager provides a high-level interface for database operations.
- * This class acts as a repository pattern, making it easier to work with the database.
+ * This class acts as a repository pattern, making it easier to work with the
+ * database.
  */
 public class DatabaseManager {
     private static DatabaseManager instance;
@@ -38,6 +39,7 @@ public class DatabaseManager {
 
     /**
      * Register a new user
+     * 
      * @return User ID if successful, -1 if email already exists
      */
     public long registerUser(String name, String email, String password) {
@@ -49,6 +51,7 @@ public class DatabaseManager {
 
     /**
      * Login user
+     * 
      * @return User ID if credentials are correct, -1 otherwise
      */
     public long loginUser(String email, String password) {
@@ -105,10 +108,10 @@ public class DatabaseManager {
      * Save or update a daily cycle entry (symptoms, mood, notes)
      */
     public long saveCycleEntry(long userId, String date, String phase, String mood, String notes,
-                               List<Symptom> symptoms) {
+            List<Symptom> symptoms) {
         // Insert or update the cycle entry
         long entryId = dbHelper.insertOrUpdateCycleEntry(userId, date, phase, mood, notes);
-        
+
         // Delete existing symptoms and add new ones
         if (entryId > 0 && symptoms != null && !symptoms.isEmpty()) {
             dbHelper.deleteSymptomsForEntry(entryId);
@@ -116,7 +119,7 @@ public class DatabaseManager {
                 dbHelper.insertSymptom(entryId, symptom.getName(), symptom.getIntensity());
             }
         }
-        
+
         return entryId;
     }
 
@@ -161,7 +164,7 @@ public class DatabaseManager {
      * Save user preferences (cycle setup)
      */
     public boolean saveUserPreferences(long userId, int cycleLength, int periodLength,
-                                      String lastPeriodStart, String trackedSymptoms) {
+            String lastPeriodStart, String trackedSymptoms) {
         return dbHelper.insertOrUpdatePreferences(userId, cycleLength, periodLength,
                 lastPeriodStart, trackedSymptoms);
     }
@@ -204,7 +207,27 @@ public class DatabaseManager {
     }
 
     /**
+     * Get most common mood statistics
+     * 
+     * @return Array with [mood, count] or null if no data
+     */
+    public String[] getMostCommonMood(long userId, String startDate, String endDate) {
+        return dbHelper.getMostCommonMood(userId, startDate, endDate);
+    }
+
+    /**
+     * Get symptom correlations by phase
+     * 
+     * @return Map: phase -> list of symptom names
+     */
+    public java.util.Map<String, java.util.List<String>> getSymptomCorrelationsByPhase(long userId, String startDate,
+            String endDate) {
+        return dbHelper.getSymptomCorrelationsByPhase(userId, startDate, endDate);
+    }
+
+    /**
      * Predict the next period start date
+     * 
      * @return Next period date as String (yyyy-MM-dd) or null
      */
     public String predictNextPeriod(long userId) {
@@ -213,6 +236,7 @@ public class DatabaseManager {
 
     /**
      * Predict the ovulation date
+     * 
      * @return Ovulation date as String (yyyy-MM-dd) or null
      */
     public String predictOvulationDate(long userId) {
@@ -221,6 +245,7 @@ public class DatabaseManager {
 
     /**
      * Predict the fertile window
+     * 
      * @return Array with [startDate, endDate] or null
      */
     public String[] predictFertileWindow(long userId) {
@@ -229,6 +254,7 @@ public class DatabaseManager {
 
     /**
      * Calculate next period date based on last period and cycle length
+     * 
      * @deprecated Use predictNextPeriod() instead
      */
     @Deprecated
@@ -244,7 +270,7 @@ public class DatabaseManager {
         if (nextPeriodDate == null) {
             return -1;
         }
-        
+
         String today = DateUtils.getCurrentDate();
         return DateUtils.daysBetween(today, nextPeriodDate);
     }
@@ -286,5 +312,77 @@ public class DatabaseManager {
             return "Follicular"; // Default to follicular for next cycle
         }
     }
-}
 
+    /**
+     * Populate sample data for testing purposes
+     * Creates realistic periods, symptoms, and cycle entries for the past 3 months
+     * Only populates if no period data exists
+     */
+    public boolean populateSampleData(long userId) {
+        // Check if user already has data
+        List<Period> existingPeriods = getPeriods(userId);
+        if (!existingPeriods.isEmpty()) {
+            return false; // Data already exists
+        }
+
+        try {
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd",
+                    java.util.Locale.getDefault());
+            java.util.Calendar cal = java.util.Calendar.getInstance();
+
+            // Add 3 periods from the past 3 months
+            for (int i = 2; i >= 0; i--) {
+                cal = java.util.Calendar.getInstance();
+                cal.add(java.util.Calendar.MONTH, -i);
+                cal.add(java.util.Calendar.DAY_OF_MONTH, -(28 * i)); // Approximate 28-day cycles
+
+                String startDate = sdf.format(cal.getTime());
+                cal.add(java.util.Calendar.DAY_OF_MONTH, 5);
+                String endDate = sdf.format(cal.getTime());
+
+                String[] flows = { "Light", "Medium", "Heavy" };
+                addPeriod(userId, startDate, endDate, 5, flows[i % 3]);
+            }
+
+            // Add sample cycle entries and symptoms over the past month
+            cal = java.util.Calendar.getInstance();
+            cal.add(java.util.Calendar.DAY_OF_MONTH, -30);
+
+            String[] moods = { "Happy", "Calm", "Energetic", "Tired", "Irritable", "Sad" };
+            String[] phases = { "Menstrual", "Follicular", "Ovulation", "Luteal" };
+            String[] symptomNames = { "Cramps", "Headache", "Fatigue", "Bloating", "Mood Swings" };
+
+            for (int i = 0; i < 30; i++) {
+                String date = sdf.format(cal.getTime());
+                String mood = moods[i % moods.length];
+                String phase = phases[(i / 7) % phases.length];
+                String notes = "Sample note for day " + (i + 1);
+
+                // Create symptoms list
+                List<Symptom> symptoms = new java.util.ArrayList<>();
+                if (i % 3 == 0) {
+                    symptoms.add(new Symptom(-1, -1, symptomNames[i % symptomNames.length], (i % 10) + 1));
+                }
+                if (i % 5 == 0) {
+                    symptoms.add(new Symptom(-1, -1, symptomNames[(i + 1) % symptomNames.length], (i % 8) + 1));
+                }
+
+                saveCycleEntry(userId, date, phase, mood, notes, symptoms);
+                cal.add(java.util.Calendar.DAY_OF_MONTH, 1);
+            }
+
+            // Update user preferences
+            String lastPeriodStart = sdf.format(new java.util.Date());
+            cal = java.util.Calendar.getInstance();
+            cal.add(java.util.Calendar.DAY_OF_MONTH, -7); // 7 days ago
+            lastPeriodStart = sdf.format(cal.getTime());
+
+            saveUserPreferences(userId, 28, 5, lastPeriodStart, "Cramps,Headache,Fatigue");
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+}

@@ -26,7 +26,7 @@
             android:id="@+id/stats_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Statistics"
+            android:text="@string/statistics_title"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_centerInParent="true"/>
@@ -42,204 +42,47 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp"
-            >
-
-
+            android:padding="16dp">
 
             <!-- Symptom Frequency -->
-
-
-            <!-- Stats cards -->
             <LinearLayout
+                android:id="@+id/symptom_frequency_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/card_bg_1"
-                android:divider="?android:attr/dividerHorizontal"
-                android:dividerPadding="8dp"
-                android:gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/card_bg"
                 android:orientation="vertical"
                 android:padding="16dp"
-                android:showDividers="middle">
+                android:elevation="2dp">
 
                 <!-- Section Title -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="12dp"
-                    android:gravity="center"
-                    android:text="Symptom Frequency"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/symptom_frequency"
                     android:textColor="@color/text_primary"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <!-- Cramps -->
+                <!-- Dynamic symptom items will be added here -->
                 <LinearLayout
+                    android:id="@+id/symptom_frequency_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="4dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="vertical" />
 
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:text="Cramps"
-                        android:textColor="@color/text_primary"
-                        android:textSize="14sp" />
-
-                    <ProgressBar
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="0dp"
-                        android:layout_height="10dp"
-                        android:layout_weight="1"
-                        android:max="100"
-                        android:progress="85"
-                        android:progressTint="@color/primary" />
-
-                    <TextView
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:text="12"
-                        android:textColor="@color/primary"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <!-- Headache -->
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <!-- Empty state -->
+                <TextView
+                    android:id="@+id/tv_no_symptoms"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="4dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:text="Headache"
-                        android:textColor="@color/text_primary"
-                        android:textSize="14sp" />
-
-                    <ProgressBar
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="0dp"
-                        android:layout_height="8dp"
-                        android:layout_weight="1"
-                        android:max="100"
-                        android:progress="60"
-                        android:progressTint="@color/primary" />
-
-                    <TextView
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:text="8"
-                        android:textColor="@color/primary"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <!-- Fatigue -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="4dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:text="Fatigue"
-                        android:textColor="@color/text_primary"
-                        android:textSize="14sp" />
-
-                    <ProgressBar
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="0dp"
-                        android:layout_height="8dp"
-                        android:layout_weight="1"
-                        android:max="100"
-                        android:progress="70"
-                        android:progressTint="@color/primary" />
-
-                    <TextView
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:text="9"
-                        android:textColor="@color/primary"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <!-- Bloating -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="4dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:text="Bloating"
-                        android:textColor="@color/text_primary"
-                        android:textSize="14sp" />
-
-                    <ProgressBar
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="0dp"
-                        android:layout_height="8dp"
-                        android:layout_weight="1"
-                        android:max="100"
-                        android:progress="45"
-                        android:progressTint="@color/primary" />
-
-                    <TextView
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:text="6"
-                        android:textColor="@color/primary"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <!-- Acne -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="4dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:text="Acne"
-                        android:textColor="@color/text_primary"
-                        android:textSize="14sp" />
-
-                    <ProgressBar
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="0dp"
-                        android:layout_height="8dp"
-                        android:layout_weight="1"
-                        android:max="100"
-                        android:progress="50"
-                        android:progressTint="@color/primary" />
-
-                    <TextView
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:text="7"
-                        android:textColor="@color/primary"
-                        android:textSize="14sp" />
-                </LinearLayout>
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/no_symptom_data"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -247,258 +90,124 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="16dp"
+                android:baselineAligned="false">
 
                 <!-- Avg Cycle Length -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:padding="12dp"
-                    android:background="@drawable/card_bg_1"
-                    >
+                    android:padding="16dp"
+                    android:background="@drawable/card_bg"
+                    android:elevation="2dp"
+                    android:layout_marginEnd="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Avg. Cycle Length"
+                        android:text="@string/avg_cycle_length"
                         android:textSize="14sp"
+                        android:textColor="@color/text_primary"
                         android:textStyle="bold"/>
 
                     <TextView
+                        android:id="@+id/tv_avg_cycle_length"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="29 days"
-                        android:textSize="24sp"
+                        android:text="-- days"
+                        android:textSize="28sp"
                         android:textColor="@color/primary"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:layout_marginTop="8dp"/>
                     <TextView
+                        android:id="@+id/tv_cycle_based_on"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Based on last 3 cycles"
+                        android:text="@string/based_on_cycles"
                         android:textSize="12sp"
-                        android:textColor="@color/text_secondary"/>
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginTop="4dp"/>
                 </LinearLayout>
 
                 <!-- Most Common Mood -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:padding="12dp"
-                    android:background="@drawable/card_bg_1"
-                   >
+                    android:padding="16dp"
+                    android:background="@drawable/card_bg"
+                    android:elevation="2dp"
+                    android:layout_marginStart="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Most Common Mood"
+                        android:text="@string/most_common_mood"
                         android:textSize="14sp"
+                        android:textColor="@color/text_primary"
                         android:textStyle="bold"/>
 
                     <TextView
+                        android:id="@+id/tv_mood_emoji"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="😊"
-                        android:textSize="24sp"
+                        android:text="--"
+                        android:textSize="32sp"
+                        android:layout_marginTop="4dp"
                         />
 
                     <TextView
+                        android:id="@+id/tv_mood_description"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="You felt happy 15 times"
+                        android:text="@string/no_mood_data"
                         android:textSize="12sp"
-                        android:textColor="@color/text_secondary"/>
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginTop="4dp"/>
                 </LinearLayout>
             </LinearLayout>
 
             <!-- Symptom Correlation -->
             <LinearLayout
+                android:id="@+id/symptom_correlation_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="12dp"
-                android:background="@drawable/card_bg_1"
+                android:padding="16dp"
+                android:background="@drawable/card_bg"
                 android:layout_marginTop="16dp"
-                >
+                android:elevation="2dp">
 
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="Symptom Correlation"
-                    android:textSize="16sp"
+                    android:text="@string/symptom_correlation"
+                    android:textSize="18sp"
+                    android:textColor="@color/text_primary"
                     android:textStyle="bold"
-                    android:layout_marginBottom="8dp"/>
+                    android:layout_marginBottom="12dp"/>
 
-                <!-- Period -->
+                <!-- Dynamic phase correlations will be added here -->
                 <LinearLayout
+                    android:id="@+id/phase_correlations_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingVertical="4dp">
+                    android:orientation="vertical" />
 
-                    <TextView
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Period"
-                        android:textSize="14sp" />
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                       >
-
-                        <TextView
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"
-                            android:text="Cramps"
-                            android:textSize="12sp"
-                            android:background="@color/symptom"
-                            android:textColor="@color/text_primary"
-                            android:paddingHorizontal="6dp"
-                            android:paddingVertical="2dp"
-                            android:layout_marginEnd="4dp"/>
-
-                        <TextView
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"
-                            android:text="Fatigue"
-                            android:textSize="12sp"
-                            android:background="@color/symptom"
-                            android:textColor="@color/text_primary"
-                            android:paddingHorizontal="6dp"
-                            android:paddingVertical="2dp"/>
-                    </LinearLayout>
-                </LinearLayout>
-
-                <!-- Separator -->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/text_secondary"/>
-
-                <!-- Follicular -->
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <!-- Empty state -->
+                <TextView
+                    android:id="@+id/tv_no_correlations"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingVertical="4dp">
-
-                    <TextView
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Follicular"
-                        android:textSize="14sp"/>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        >
-
-                        <TextView
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"
-                            android:text="Energetic"
-                            android:textSize="12sp"
-                            android:background="@color/symptom"
-                            android:textColor="@color/text_primary"
-                            android:paddingHorizontal="6dp"
-                            android:paddingVertical="2dp"/>
-                    </LinearLayout>
-                </LinearLayout>
-
-                <!-- Separator -->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/neutral_dark"/>
-
-                <!-- Ovulation -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingVertical="4dp">
-
-                    <TextView
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Ovulation"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:text="No common symptoms"
-                        android:textSize="12sp"
-                        android:textColor="@color/text_secondary"/>
-                </LinearLayout>
-
-                <!-- Separator -->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/neutral_dark"/>
-
-                <!-- Luteal (PMS) -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingVertical="4dp">
-
-                    <TextView
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Luteal (PMS)"
-                        android:textSize="14sp"
-                        />
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        >
-
-                        <TextView
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"
-                            android:text="Bloating"
-                            android:textSize="12sp"
-                            android:background="@color/symptom"
-                            android:textColor="@color/text_primary"
-                            android:paddingHorizontal="6dp"
-                            android:paddingVertical="2dp"/>
-
-                        <TextView
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"
-                            android:text="Acne"
-                            android:textSize="12sp"
-                            android:background="@color/symptom"
-                            android:textColor="@color/text_primary"
-                            android:paddingHorizontal="6dp"
-                            android:paddingVertical="2dp"/>
-
-                        <TextView
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"
-                            android:text="+2"
-                            android:textSize="12sp"
-                            android:background="@color/symptom"
-                            android:textColor="@color/text_secondary"
-                            android:paddingHorizontal="6dp"
-                            android:paddingVertical="2dp"/>
-                    </LinearLayout>
-                </LinearLayout>
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/no_correlation_data"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -508,90 +217,108 @@
 
     <!-- Bottom Navigation -->
     <LinearLayout
+        android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
-        android:background="@color/background_light"
-        android:gravity="center"
-        android:weightSum="4">
+        android:weightSum="4"
+        android:background="@drawable/bottom_nav_bg"
+        android:padding="8dp">
 
+        <!-- HOME -->
         <LinearLayout
+            android:id="@+id/nav_home"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
+
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/home"
-                android:contentDescription="Home"
-                app:tint="@color/neutral_dark"/>
+                app:tint="@color/text_secondary" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Home"
-                android:textSize="10sp"/>
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
+        <!-- CALENDAR -->
         <LinearLayout
+            android:id="@+id/nav_calendar"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
+
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/calendar"
-                android:contentDescription="Calendar"
-                app:tint="@color/neutral_dark"/>
+                app:tint="@color/text_secondary" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Calendar"
-                android:textSize="10sp"/>
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
+        <!-- STATS -->
         <LinearLayout
+            android:id="@+id/nav_stats"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
+
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/stat"
-                android:contentDescription="Stats"
-                app:tint="@color/primary"/>
+                app:tint="@color/primary" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Stats"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                android:textColor="@color/primary"/>
+                android:textColor="@color/primary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
+        <!-- SETTINGS -->
         <LinearLayout
+            android:id="@+id/nav_settings"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
+
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/settings"
-                android:contentDescription="Settings"
-                app:tint="@color/neutral_dark"/>
+                app:tint="@color/text_secondary" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="Settings"
-                android:textSize="10sp"/>
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>

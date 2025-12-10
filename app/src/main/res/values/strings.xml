@@ -1,3 +1,46 @@
 <resources>
     <string name="app_name">MyCycle</string>
+    <!-- 🏠 HomeActivity Greetings -->
+    <string name="home_greeting_generic">Welcome!</string>
+    <string name="home_greeting_with_name">Welcome, %1$s!</string>
+
+    <!-- 😊 Mood display -->
+    <string name="home_mood_default">Mood: Neutral</string>
+
+    <!-- 📋 Status display -->
+    <string name="home_status_default">No notes added yet.</string>
+    <string name="home_status_with_notes">You added some notes today!</string>
+
+    <!-- ⚙️ Navigation / Toast messages -->
+    <string name="session_expired">Your session has expired. Please sign in again.</string>
+
+    <!-- 💾 Generic actions -->
+    <string name="save">Save</string>
+    <string name="saving">Saving...</string>
+
+    <!-- 🩺 SymptomsActivity -->
+    <string name="symptoms_saved">Symptoms saved successfully.</string>
+    <string name="symptoms_save_error">Could not save symptoms. Please try again.</string>
+
+    <!-- 📅 CalendarActivity -->
+    <string name="no_cycle_data">No cycle data yet. Add your period and preferences to see predictions.</string>
+
+    <!-- 📊 StatisticsActivity -->
+    <string name="symptom_frequency">Symptom Frequency</string>
+    <string name="no_symptom_data">No symptom data available yet.</string>
+    <string name="avg_cycle_length">Avg. Cycle Length</string>
+    <string name="based_on_cycles">Based on your cycles</string>
+    <string name="most_common_mood">Most Common Mood</string>
+    <string name="no_mood_data">No mood data available yet.</string>
+    <string name="symptom_correlation">Symptom Correlation</string>
+    <string name="no_correlation_data">No correlation data available yet.</string>
+    <string name="mood_times">You felt %1$s %2$d times</string>
+    <string name="no_common_symptoms">No common symptoms</string>
+
+    <!-- Optional UI labels (in case you use them elsewhere) -->
+    <string name="home_title">MyCycle - Home</string>
+    <string name="calendar_title">Calendar</string>
+    <string name="settings_title">Settings</string>
+    <string name="sign_in_title">Sign In</string>
+    <string name="statistics_title">Statistics</string>
 </resources>
